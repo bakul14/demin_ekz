@@ -48,11 +48,22 @@ int main()
 {
     // Что должно быть в main()?
 
-    char *str1 = "bbcdsfghj";
-    char *str2 = "abckkm'l';,";
+    char *str1 = "abcdefghijkl";    // База.
+    char str2[100];                 // Массив символов.
     
-    printf("%d\n\r", strncmp1(str1, str2, 5));
-    printf("hi");
+    //Проверка функций:
+    //----------------------------------------------------------------------------------------------------------------
+    printf("\n\rTest strncpy:\n\r");
+    printf("Copy first 5 characters of str1 to str2:  %s\n\r", strncpy1(str2, str1, 5));                // В str2 скопируем 5 первых символов из str1.
+    printf("Copy first 20 characters of str1 to str2: %s\n\r", strncpy1(str2, str1, 20));               // В str2 скопируется str1 в полном объеме.
+    //----------------------------------------------------------------------------------------------------------------
+    printf("\n\rTest srtncat:\n\r");
+    printf("Add the first 5 characters of str1 to the end of str2:  %s\n\r", strncat1(str2, str1, 5));  // В конец str2 добавляются первые 5 символов str1
+    printf("Add the first 20 characters of str1 to the end of str2: %s\n\r", strncat1(str2, str1, 20)); // Добавляются еще 20 символов str1 (добавится вся строка)
+    //----------------------------------------------------------------------------------------------------------------
+    char *str3 = "qwerty";
+    printf("\n\rTest strncmp:\n\r");
+    printf("Compare the first 5 characters of str2 and str3: %d\n\n\r", strncmp1(str2, str3, 5));       // Сравнение строк str2 и str3
 
     return 0;
 }

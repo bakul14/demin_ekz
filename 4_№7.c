@@ -34,27 +34,20 @@ void quick_sort(int *v, int left, int right)
 
 int main()
 {
-    int box = 10;       // Эта переменная хранит объем пространства, в которое будут помещаться сортируемые числа
-    int *pArray = (int *)malloc(box * sizeof(int)); // Создаем указатель на массив данных размером "box" элементов типа int
     int number = 0;     // Сюда будет попадать каждое новое число из консоли
-    int counter = 0;    // Счетчик количества элементов
+    int box = 0;       // Эта переменная хранит объем пространства, в которое будут помещаться сортируемые числа
+    scanf("%d", &box);
+    int *pArray = (int *)malloc(box * sizeof(int)); // Создаем указатель на массив данных размером "box" элементов типа int
 
-    while (scanf("%d", &number))    /* Вводим через пробел сколь угодно много чисел. Цикл завершится, когда в консоль будет введено 
-                                     сочетание клавиш CTRL+D и ENTER*/
-    {
-        pArray[counter] = number;   // Записываем в массив число из консоли
-        counter++;                  // Инкрементируем счетчик
-        if (counter >= box)         // Если кол-во элементов > размера хранилища:
-        {
-            box *= 2;               // Удваиваем переменную, которая хранит в себе объем хранилища
-            pArray = (int *)realloc(pArray, box * sizeof(int)); // Расширяем память до новой box
-        }
+    for (int i = 0; i < box; i++) {
+        scanf("%d", &number);    
+        pArray[i] = number;   // Записываем в массив число из консоли
     }
 
-    quick_sort(pArray, 0, counter);     // Вызов сортировки
+    quick_sort(pArray, 0, box-1);     // Вызов сортировки
 
-    for (int i = 0; i < counter; i++)   // Выводим результат
-        printf("%d ", *(pArray + i), counter);
+    for (int j = 0; j < box; j++)   // Выводим результат
+        printf("%d\n", *(pArray + j));
 
     return 0;
 }
